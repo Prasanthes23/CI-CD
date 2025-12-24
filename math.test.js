@@ -1,4 +1,4 @@
-const add = require('./math');
+const add = require('../math');
 
 if (add(2, 3) !== 5) {
   console.error("Test failed");
