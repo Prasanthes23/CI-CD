@@ -1,12 +1,6 @@
-FROM httpd:2.4
+FROM node:18
 
-USER root
-
-# Install node and svn (Debian-based image)
 RUN apt-get update && \
-    apt-get install -y nodejs npm subversion && \
-    apt-get clean
+    apt-get install -y subversion
 
-COPY ./index.html /usr/local/apache2/htdocs/
-
-EXPOSE 80
+WORKDIR /app
