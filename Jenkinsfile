@@ -1,34 +1,10 @@
 pipeline {
-    agent any
-
+    agent { dockerfile true }
     stages {
-        stage('Checkout') {
+        stage('Test') {
             steps {
-                checkout scm
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'echo Building...'
-            }
-        }
-
-        stage('Deploy to Dev') {
-            when {
-                branch 'develop'
-            }
-            steps {
-                sh 'echo Deploying to DEV server'
-            }
-        }
-
-        stage('Deploy to Production') {
-            when {
-                branch 'main'
-            }
-            steps {
-                sh 'echo Deploying to PROD server'
+                sh 'node --version'
+                sh 'svn --version'
             }
         }
     }
