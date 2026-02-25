@@ -1,8 +1,12 @@
-# Use official Apache image
 FROM httpd:2.4
 
-# Copy your website files into Apache directory
+USER root
+
+# Install node and svn (Debian-based image)
+RUN apt-get update && \
+    apt-get install -y nodejs npm subversion && \
+    apt-get clean
+
 COPY ./index.html /usr/local/apache2/htdocs/
 
-# Expose port 80
 EXPOSE 80
